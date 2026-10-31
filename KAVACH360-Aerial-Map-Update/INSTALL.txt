@@ -1,0 +1,20 @@
+KAVACH360 AI — Aerial Map Image Update
+
+This package replaces the aerial construction site image used by the Smart Site Map.
+
+Install from your repository root (the folder containing frontend/):
+  unzip -o ~/Downloads/KAVACH360-Aerial-Map-Update.zip -d .
+
+Expected file:
+  frontend/assets/construction-aerial.webp
+
+The current frontend already references this exact path:
+  /assets/construction-aerial.webp
+
+Then open the app and click Smart Site Map in the left sidebar.
+The Smart Site Map page shows the aerial image on the left and the configured
+2D site blueprint on the right, with zone/camera/observation markers.
+
+This is a user-provided illustrative site image, not live satellite/GPS imagery.
+Zone markers are manually configured map overlays and must be checked against
+an actual site plan before operational use.

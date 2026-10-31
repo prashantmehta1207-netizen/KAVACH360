@@ -1,0 +1,22 @@
+KAVACH360 Safety SOPs Page UI Upgrade
+
+This patch replaces only:
+  frontend/index.html? (NO)
+  frontend/styles.css
+  frontend/js/app.js
+
+Only these two files are included. Your backend, SQLite database, uploaded videos, reports, site data, and other files are not replaced.
+
+Install from your KAVACH360 project root:
+  unzip -o ~/Downloads/KAVACH360-SOP-Page-Fix.zip -d .
+
+Restart the backend (Ctrl+C, then):
+  source .venv/bin/activate
+  python -m uvicorn backend.main:app --reload --reload-dir backend --reload-dir frontend --port 8000
+
+Open:
+  http://127.0.0.1:8000/#sops
+
+Then hard refresh Chrome with Cmd+Shift+R.
+
+The page displays real documents and real SOP-linked observations from the backend. When no PDF is uploaded, it shows an intentional empty state and helpful upload guidance rather than fake documents or fabricated rule matches.

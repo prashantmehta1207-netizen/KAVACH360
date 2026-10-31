@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KAVACH360 AI - Login</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        :root {
+            --bg-page: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --success: #10b981;
+            --shadow-subtle: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            background-image:
+                radial-gradient(at 0% 0%, #e0e7ff 0px, transparent 40%),
+                radial-gradient(at 100% 100%, #ecfdf5 0px, transparent 35%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 2.25rem 2rem;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 1.75rem;
+        }
+
+        .brand-icon {
+            width: 50px;
+            height: 50px;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            color: var(--primary);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .brand-header h1 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: -0.3px;
+        }
+
+        .brand-header p {
+            color: var(--text-muted);
+            font-size: 0.84rem;
+            margin-top: 0.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.15rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.4rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i.leading-icon {
+            position: absolute;
+            left: 0.9rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+
+        .input-wrapper input,
+        .input-wrapper select {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.7rem 0.9rem 0.7rem 2.45rem;
+            color: var(--text-main);
+            font-size: 0.88rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .input-wrapper select {
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .input-wrapper input:focus,
+        .input-wrapper select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 0.9rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .password-toggle:hover {
+            color: var(--text-main);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            accent-color: var(--primary);
+        }
+
+        .forgot-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-hover);
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+            padding-top: 1.15rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .status-badge span.dot {
+            width: 7px;
+            height: 7px;
+            background: var(--success);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="brand-header">
+            <div class="brand-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h1>KAVACH360 AI</h1>
+            <p>Construction Safety Intelligence Platform</p>
+        </div>
+
+        <form id="loginForm">
+            <!-- Role Selection -->
+            <div class="form-group">
+                <label for="role">Inspection Role</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-user-shield leading-icon"></i>
+                    <select id="role" required>
+                        <option value="safety_officer">Safety Officer / EHS Lead</option>
+                        <option value="site_supervisor">Site Supervisor</option>
+                        <option value="auditor">Compliance Auditor</option>
+                        <option value="admin">Site Administrator</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Email / ID -->
+            <div class="form-group">
+                <label for="email">Officer ID / Email</label>
+                <div class="input-wrapper">
+                    <i class="fa-regular fa-envelope leading-icon"></i>
+                    <input type="text" id="email" placeholder="officer@kavach360.internal"
+                        value="inspector.zone1@kavach360.com" required />
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock leading-icon"></i>
+                    <input type="password" id="password" placeholder="••••••••" value="demo12345" required />
+                    <button type="button" class="password-toggle" id="togglePassword">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="form-options">
+                <label class="remember-me">
+                    <input type="checkbox" checked /> Remember Site Session
+                </label>
+                <a href="#" class="forgot-link">Reset Access</a>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-submit">
+                <span>Enter Safety Command</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </form>
+
+        <div class="status-badge">
+            <span class="dot"></span>
+            <span>Gemma 4 Multimodal Inference Ready</span>
+        </div>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("password");
+
+        toggleBtn.addEventListener("click", () => {
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type", type);
+            toggleBtn.innerHTML = type === "password"
+                ? '<i class="fa-regular fa-eye"></i>'
+                : '<i class="fa-regular fa-eye-slash"></i>';
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const role = document.getElementById("role").value;
+            localStorage.setItem("kavach_user_role", role);
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+
+</html>

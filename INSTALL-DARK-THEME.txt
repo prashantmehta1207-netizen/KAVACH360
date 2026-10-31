@@ -1,0 +1,15 @@
+KAVACH360 DARK CONSTRUCTION THEME UPDATE
+
+This patch updates only the frontend files. Extract this ZIP into the existing KAVACH360 repository root (the folder containing README.md, LICENSE, backend/, and frontend/).
+
+Mac install:
+  cd ~/Desktop/hacto/KAVACH360
+  unzip -o ~/Downloads/KAVACH360-Dark-Map-Theme-Update.zip -d .
+
+Restart FastAPI without watching the .venv folder:
+  source .venv/bin/activate
+  python -m uvicorn backend.main:app --reload --reload-dir backend --reload-dir frontend --port 8000
+
+Then hard-refresh Chrome with Cmd+Shift+R and open http://127.0.0.1:8000
+
+The aerial map image is illustrative site imagery, not live satellite or GPS data. Markers and blueprint zones use the application's configured site data.

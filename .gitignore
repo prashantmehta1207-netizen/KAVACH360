@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.data/
+storage/videos/*
+storage/frames/*
+storage/sops/*
+storage/reports/*
+!storage/.gitkeep

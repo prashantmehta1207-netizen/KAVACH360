@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#04142a">
+  <meta name="description" content="KAVACH360 AI — multimodal construction safety intelligence platform.">
+  <title>KAVACH360 AI | Construction Safety Intelligence</title>
+  <link rel="preload" as="image" href="/assets/night-construction-bg.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>[hidden] { display: none !important; }</style>
+  <link rel="stylesheet" href="/styles.css?v=20261031-sop-proper3">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#dashboard" aria-label="KAVACH360 dashboard">
+        <span class="brand-mark">K</span>
+        <span><strong>KAVACH360 <em>AI</em></strong><small>Construction Safety Intelligence</small></span>
+      </a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <a href="#dashboard" class="nav-link active" data-route="dashboard"><span class="nav-icon">▦</span>Dashboard</a>
+        <a href="#inspections" class="nav-link" data-route="inspections"><span class="nav-icon">▣</span>Video Inspections</a>
+        <a href="#map" class="nav-link" data-route="map"><span class="nav-icon">⌖</span>Smart Site Map</a>
+        <a href="#sops" class="nav-link" data-route="sops"><span class="nav-icon">▤</span>Safety SOPs</a>
+        <a href="#actions" class="nav-link" data-route="actions"><span class="nav-icon">☑</span>Action Center</a>
+        <a href="#reports" class="nav-link" data-route="reports"><span class="nav-icon">▧</span>Reports</a>
+        <a href="#sites" class="nav-link" data-route="sites"><span class="nav-icon">⌂</span>Site Management</a>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <a href="#settings" class="nav-link settings-link" data-route="settings"><span class="nav-icon">⚙</span>Settings</a>
+      <div class="sidebar-profile">
+        <div class="avatar">SM</div>
+        <div><strong>Safety Manager</strong><small>Workspace Admin</small></div>
+        <span class="profile-dots">•••</span>
+      </div>
+    </aside>
+
+    <div class="main-shell">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menuToggle" aria-label="Open menu">☰</button>
+        <label class="global-search"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search inspections, sites, or hazards..."></label>
+        <div class="topbar-right">
+          <div class="date-chip"><span>▦</span><div><strong id="todayDate">Today</strong><small>Local workspace</small></div></div>
+          <button class="icon-button notification-button" id="notificationButton" aria-label="Notifications">♧<b></b></button>
+          <div class="top-user"><div class="avatar avatar-blue">SM</div><div><strong>Safety Manager</strong><small>Site Operations</small></div><span>⌄</span></div>
+        </div>
+      </header>
+      <main class="content" id="appView" tabindex="-1"></main>
+      <footer class="app-footer"><span>© 2026 KAVACH360 AI</span><span>Visual observations support human-led safety reviews.</span><span id="connectionLabel" class="connection-label"><i></i> Checking backend…</span></footer>
+    </div>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modalBackdrop" hidden><section class="modal" id="modalContent" role="dialog" aria-modal="true"></section></div>
+  <script src="/js/app.js?v=20261031-sop-proper3" defer></script>
+</body>
+</html>
