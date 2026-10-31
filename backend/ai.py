@@ -11,6 +11,8 @@ import httpx
 
 OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434").rstrip("/")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:e2b")
+OLLAMA_API_KEY = os.getenv("OLLAMA_API_KEY", "").strip()
+OLLAMA_API_HEADERS = {"Authorization": f"Bearer {OLLAMA_API_KEY}"} if OLLAMA_API_KEY else {}
 
 SYSTEM_PROMPT = """You are a cautious construction-site visual inspection assistant. Analyze only what is visibly supported by the image. You are NOT a certified safety inspector. Do not claim that an incident or violation is confirmed. If an object is small, occluded, blurry, or uncertain, say so. Do not identify people. Do not infer identity, intent, or emotion. Provide practical review suggestions, not legal conclusions. Return one valid JSON object only."""
 
@@ -57,7 +59,7 @@ async def analyze_image(image_path: str | Path) -> dict[str, Any]:
         "options": {"temperature": 0.1, "num_ctx": 8192},
     }
     async with httpx.AsyncClient(timeout=httpx.Timeout(180.0, connect=8.0)) as client:
-        response = await client.post(f"{OLLAMA_URL}/api/chat", json=payload)
+        response = await client.post(f"{OLLAMA_URL}/api/chat", json=payload, headers=OLLAMA_API_HEADERS)
         response.raise_for_status()
         body = response.json()
     content = body.get("message", {}).get("content", "")

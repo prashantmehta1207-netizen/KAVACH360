@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: kavach360-ai-demo
+    runtime: python
+    plan: free
+    buildCommand: pip install --upgrade pip && pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: OLLAMA_BASE_URL
+        value: https://ollama.com
+      - key: OLLAMA_MODEL
+        value: gemma4:31b
+      - key: OLLAMA_API_KEY
+        sync: false

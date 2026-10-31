@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / ".env")
 
-from .ai import OLLAMA_MODEL, OLLAMA_URL, analyze_image
+from .ai import OLLAMA_API_HEADERS, OLLAMA_MODEL, OLLAMA_URL, analyze_image
 from .db import connect, init_db, new_id, now_iso
 from .reports import build_inspection_pdf
 from .sops import add_sop, best_rule
@@ -125,7 +125,7 @@ def get_inspection_bundle(inspection_id: str) -> dict[str, Any]:
 async def health() -> dict:
     try:
         async with httpx.AsyncClient(timeout=3.0) as client:
-            response = await client.get(f"{OLLAMA_URL}/api/tags")
+            response = await client.get(f"{OLLAMA_URL}/api/tags", headers=OLLAMA_API_HEADERS)
             response.raise_for_status()
             tags = response.json().get("models", [])
         available = [m.get("name", "") for m in tags]
@@ -275,7 +275,7 @@ async def start_analysis(inspection_id: str, background_tasks: BackgroundTasks) 
     # Check model connectivity before queuing work so users receive an actionable error.
     try:
         async with httpx.AsyncClient(timeout=4.0) as client:
-            r = await client.get(f"{OLLAMA_URL}/api/tags")
+            r = await client.get(f"{OLLAMA_URL}/api/tags", headers=OLLAMA_API_HEADERS)
             r.raise_for_status()
             models = [x.get("name", "") for x in r.json().get("models", [])]
         model_found = any(x == OLLAMA_MODEL for x in models) if ":" in OLLAMA_MODEL else any(x.split(":")[0] == OLLAMA_MODEL for x in models)
